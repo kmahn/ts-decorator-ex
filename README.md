@@ -1,0 +1,1 @@
+# TypeScript Decorator Test Code

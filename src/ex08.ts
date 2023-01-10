@@ -2,12 +2,11 @@ const Doubled = (target: any, propertyKey: string, descriptor: TypedPropertyDesc
   const getter = descriptor.get;
   if (!getter) throw new Error('is not getter');
 
-  descriptor.get = function (arg?: number) {
-    console.log(this);
+  descriptor.get = function () {
     const result = getter.apply(this) * 2;
     return result;
   };
-  
+
   return descriptor;
 }
 

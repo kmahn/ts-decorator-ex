@@ -8,8 +8,8 @@ class Greeter {
   constructor(private greeting: string) {
   }
 
-  @Enumerable(false)
   // @Enumerable(true)
+  @Enumerable(false)
   greet() {
     return 'Hello, ' + this.greeting;
   }

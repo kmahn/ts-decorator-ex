@@ -1,4 +1,4 @@
-function Enumerable(value: boolean): MethodDecorator {
+function Enumerable2(value: boolean): MethodDecorator {
   return <T>(target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => {
     descriptor.enumerable = value;
   };
@@ -13,7 +13,7 @@ class Point {
     return this._x;
   }
 
-  @Enumerable(true)
+  @Enumerable2(true)
   get y(): number {
     return this._y;
   }

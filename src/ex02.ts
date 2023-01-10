@@ -1,24 +1,20 @@
-const Decorator2: any = (tag: string) => {
-  return (...args: any[]) => {
-    console.log(`--- [${tag}] ---`);
-    args.forEach((arg, i) => console.log(`${i + 1})`, arg));
+function First(): MethodDecorator {
+  console.log('first(): factory evaluated');
+  return (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
+    console.log('first(): called');
   };
 }
 
-@Decorator2('Class')
-class Test {
-  @Decorator2('Property')
-  name?: string;
-
-  @Decorator2('Accessor')
-  get property(): string {
-    return 'name: ' + this.name;
-  }
-
-  @Decorator2('Method')
-  method(@Decorator2('Parameter') param: string): void {
-    console.log('Call method, params:', param);
-  }
+function Second(): MethodDecorator {
+  console.log('second(): factory evaluated');
+  return (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
+    console.log('second(): called');
+  };
 }
 
-const test = new Test();
+class Test2 {
+  @First()
+  @Second()
+  method(): void {
+  }
+}
